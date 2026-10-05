@@ -1,0 +1,53 @@
+/*
+  Design tokens. The design was drawn on a 1024px-wide canvas, so `--u` is one
+  design pixel: it stays at 1px up to 1024px, then grows with the window until
+  1536px. Sizes written as calc(var(--u) * n) therefore keep the design's
+  proportions on larger screens.
+*/
+
+:root {
+  /* colour */
+  --color-cream: #fff2e9;
+  --color-paper: #fdfdfc;
+  --color-sand: #efe7dd;
+  --color-navy: #132f48;
+  --color-olive: #5f661f;
+  --color-clay: #521f12;
+  --color-blush: #d8a790;
+  --color-ink: #000000;
+  --color-muted: #6e6e6e;
+  --color-tile: #f1e4d6;
+
+  /* scale */
+  --u: clamp(0.0625rem, 0.09766vw, 0.09375rem);
+  --page-max: calc(var(--u) * 1024.5);
+  --gutter: calc(var(--u) * 30);
+
+  /* type */
+  --fs-hero: clamp(5rem, 17.25vw, 16.5rem);
+  --fs-title-lg: clamp(3.25rem, 10.28vw, 9.875rem);
+  --fs-title: clamp(2.75rem, 5.86vw, 5.625rem);
+  --fs-accent: clamp(2.75rem, 5.28vw, 5.0625rem);
+  --fs-stat: calc(var(--u) * 35);
+  --fs-brand: calc(var(--u) * 28);
+  --fs-lead: calc(var(--u) * 16);
+  --fs-body: calc(var(--u) * 14);
+  --fs-small: calc(var(--u) * 13);
+  --fs-card: calc(var(--u) * 12.1);
+  --fs-price: calc(var(--u) * 10.7);
+
+  /* motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Below the design width, nudge small text up so it stays readable. */
+@media (max-width: 899px) {
+  :root {
+    --gutter: clamp(1.25rem, 4vw, 2rem);
+    --fs-brand: 1.375rem;
+    --fs-body: 0.9375rem;
+    --fs-small: 0.875rem;
+    --fs-card: 0.875rem;
+    --fs-price: 0.8125rem;
+  }
+}

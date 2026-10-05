@@ -1,0 +1,38 @@
+/* Sits on top of the hero photograph. */
+.header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: calc(var(--u) * 23) calc(var(--u) * 41) 0;
+}
+
+.home {
+  justify-self: start;
+  margin-top: calc(var(--u) * 13);
+}
+
+.brand {
+  font-size: var(--fs-brand);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-cream);
+}
+
+@media (max-width: 899px) {
+  .header {
+    padding: 1rem var(--gutter) 0;
+  }
+
+  .home {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 419px) {
+  .brand {
+    font-size: 1.125rem;
+  }
+}

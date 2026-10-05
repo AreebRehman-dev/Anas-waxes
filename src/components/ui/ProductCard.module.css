@@ -1,0 +1,36 @@
+.card {
+  min-width: 0;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 149 / 137.7;
+  overflow: hidden;
+  border-radius: calc(var(--u) * 8);
+  background: linear-gradient(155deg, #f6ebdf 0%, var(--color-tile) 55%, #e6d5c3 100%);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.name {
+  margin-top: calc(var(--u) * 3.9);
+  font-size: var(--fs-card);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-clay);
+}
+
+.price {
+  margin-top: calc(var(--u) * 2);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--fs-price);
+  line-height: 1.2;
+  color: var(--color-muted);
+}

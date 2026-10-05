@@ -1,0 +1,12 @@
+.logo {
+  display: block;
+  height: auto;
+}
+
+.sm {
+  width: calc(var(--u) * 63);
+}
+
+.lg {
+  width: calc(var(--u) * 76);
+}

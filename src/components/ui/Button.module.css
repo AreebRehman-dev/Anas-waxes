@@ -1,0 +1,56 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    opacity 0.25s var(--ease);
+}
+
+.button:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.outline {
+  min-width: calc(var(--u) * 231);
+  min-height: calc(var(--u) * 36.8);
+  padding: 0 calc(var(--u) * 32);
+  border: 1.5px solid var(--color-cream);
+  background: transparent;
+  color: var(--color-cream);
+  font-size: var(--fs-lead);
+  text-transform: uppercase;
+}
+
+.outline:hover {
+  background: var(--color-cream);
+  color: var(--color-navy);
+}
+
+.solid {
+  width: 100%;
+  min-height: calc(var(--u) * 37.4);
+  border: 0;
+  background: var(--color-ink);
+  color: var(--color-sand);
+  font-size: calc(var(--u) * 15.2);
+}
+
+.solid:hover:not(:disabled) {
+  background: #2a2a2a;
+}
+
+/* Comfortable tap targets on touch screens. */
+@media (pointer: coarse) {
+  .outline,
+  .solid {
+    min-height: 2.75rem;
+  }
+}
