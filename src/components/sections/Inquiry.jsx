@@ -3,17 +3,20 @@ import inquiryImage from '@/assets/images/inquiry.jpg';
 import InquiryForm from '@/components/forms/InquiryForm';
 import styles from './Inquiry.module.css';
 
-export default function Inquiry() {
+/* Pass `product` (a name) to start the message with a quote request for it. */
+export default function Inquiry({ product }) {
+  const initialMessage = product ? `I would like a quote for ${product}.\n\n` : '';
+
   return (
     <section className={styles.section} id="inquiry" aria-labelledby="inquiry-title">
-      <div className={styles.media}>
+      <div className={`reveal-photo ${styles.media}`}>
         <Image
           src={inquiryImage}
           alt="Racks of wax slabs inside the Anas Waxes storage hall"
           fill
           sizes="(max-width: 899px) 100vw, 44vw"
           placeholder="blur"
-          className={styles.image}
+          className={`parallax-photo ${styles.image}`}
         />
       </div>
 
@@ -22,7 +25,7 @@ export default function Inquiry() {
           <h2 id="inquiry-title" className={`display ${styles.title}`}>
             Inquiry &amp; Quote
           </h2>
-          <InquiryForm />
+          <InquiryForm initialMessage={initialMessage} />
         </div>
       </div>
     </section>

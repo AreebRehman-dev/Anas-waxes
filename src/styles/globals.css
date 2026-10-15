@@ -69,8 +69,33 @@ a {
   transform: none;
 }
 
-/* Fade-and-rise as a block scrolls into view. Pure CSS; browsers without
-   scroll-driven animations simply show the block. */
+::selection {
+  background: var(--color-clay);
+  color: var(--color-cream);
+}
+
+/* Underline that draws in from the left on hover. Put it on an inline
+   element (a link or a span) so it follows the text across line breaks. */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  text-decoration: none;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 0.5s var(--ease-out);
+}
+
+a:hover .link-line,
+a:focus-visible .link-line,
+a.link-line:hover,
+a.link-line:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* ------------------------------------------------------------- motion --- */
+
 @keyframes reveal {
   from {
     opacity: 0;
@@ -85,12 +110,76 @@ a {
   }
 }
 
+/* Headlines: rise out of a soft blur. */
+@keyframes rise-soft {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    filter: blur(10px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+  }
+}
+
+/* Photographs: open like a window. */
+@keyframes unveil {
+  from {
+    clip-path: inset(10% 6% 10% 6% round calc(var(--u) * 12));
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 0);
+    opacity: 1;
+  }
+}
+
+/* Photographs: settle from a slight zoom. Uses `scale` so it can combine
+   with a `translate` parallax on the same element. */
+@keyframes settle {
+  from {
+    scale: 1.12;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+/* Every page fades in when it is reached, including client navigation. */
+.page-enter {
+  animation: fade-in 0.6s var(--ease-out) both;
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  /* Pure CSS scroll effects; browsers without scroll-driven animations
+     simply show everything in place. */
   @supports (animation-timeline: view()) {
     .reveal {
       animation: reveal linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 40%;
+    }
+
+    .reveal-photo {
+      animation: unveil linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    .parallax-photo {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
     }
   }
 }

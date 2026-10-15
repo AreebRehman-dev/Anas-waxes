@@ -23,7 +23,7 @@ const sans = Inter({
   display: 'swap',
 });
 
-// Prices.
+// Product card details.
 const mono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: '400',

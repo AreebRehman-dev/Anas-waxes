@@ -49,11 +49,14 @@
   display: inline-block;
   margin-top: calc(var(--u) * 9.6);
   text-decoration: none;
+  /* Keeps the .link-line underline animation alongside the colour change. */
+  transition:
+    color 0.4s var(--ease-out),
+    background-size 0.5s var(--ease-out);
 }
 
 .value:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  color: var(--color-cream);
 }
 
 .phone {

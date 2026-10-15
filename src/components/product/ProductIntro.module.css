@@ -1,0 +1,142 @@
+.intro {
+  background: var(--color-cream);
+  color: var(--color-clay);
+  padding: calc(var(--u) * 116) calc(var(--u) * 44) calc(var(--u) * 64) calc(var(--u) * 53.4);
+}
+
+.inner {
+  max-width: calc(var(--page-max) - var(--u) * 97.4);
+  margin: 0 auto;
+}
+
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-small);
+}
+
+.crumbs li + li::before {
+  content: '/';
+  margin-right: 0.5em;
+  opacity: 0.5;
+}
+
+
+.crumbs [aria-current] {
+  opacity: 0.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: calc(var(--u) * 447) minmax(0, 1fr);
+  column-gap: calc(var(--u) * 56);
+  align-items: center;
+  margin-top: calc(var(--u) * 32);
+}
+
+.media {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: calc(var(--u) * 8);
+  background: var(--color-tile);
+  box-shadow: 0 30px 60px -40px rgba(82, 31, 18, 0.5);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s var(--ease-out);
+}
+
+.media:hover .image {
+  transform: scale(1.04);
+}
+
+.eyebrow {
+  font-family: var(--font-label), system-ui, sans-serif;
+  font-size: var(--fs-small);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: calc(var(--u) * 8);
+  font-size: var(--fs-title);
+}
+
+.description {
+  max-width: 34em;
+  margin-top: calc(var(--u) * 20);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  max-width: 34em;
+  margin-top: calc(var(--u) * 28);
+  border-top: 1px solid rgba(82, 31, 18, 0.2);
+  border-bottom: 1px solid rgba(82, 31, 18, 0.2);
+}
+
+.spec {
+  padding: calc(var(--u) * 14) 0;
+}
+
+.specLabel {
+  font-family: var(--font-label), system-ui, sans-serif;
+  font-size: calc(var(--u) * 11);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.specValue {
+  margin-top: calc(var(--u) * 4);
+  font-size: var(--fs-stat);
+}
+
+.cta {
+  margin-top: calc(var(--u) * 32);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .media,
+  .body {
+    animation: rise 0.9s var(--ease) both;
+  }
+
+  .body {
+    animation-delay: 0.12s;
+  }
+}
+
+@media (max-width: 899px) {
+  .intro {
+    padding: 5.5rem var(--gutter) 3.5rem;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .media {
+    max-width: 28rem;
+  }
+
+  .specLabel {
+    font-size: 0.6875rem;
+  }
+
+  .specValue {
+    font-size: 1.75rem;
+  }
+}

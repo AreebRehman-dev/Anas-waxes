@@ -1,5 +1,4 @@
 import SiteFooter from '@/components/layout/SiteFooter';
-import SiteHeader from '@/components/layout/SiteHeader';
 import { siteConfig } from '@/config/site';
 import { fontVariables } from '@/lib/fonts';
 import '@/styles/globals.css';
@@ -27,7 +26,6 @@ export default function RootLayout({ children }) {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <SiteHeader />
         {children}
         <SiteFooter />
       </body>

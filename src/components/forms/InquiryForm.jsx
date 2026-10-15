@@ -5,8 +5,6 @@ import Button from '@/components/ui/Button';
 import { submitInquiry } from '@/lib/inquiry';
 import styles from './InquiryForm.module.css';
 
-const EMPTY = { name: '', email: '', message: '' };
-
 const MESSAGES = {
   idle: 'We only use your details to reply to your request.',
   submitting: 'Sending…',
@@ -15,9 +13,10 @@ const MESSAGES = {
   error: 'Something went wrong. Please try again, or email us directly.',
 };
 
-export default function InquiryForm() {
+export default function InquiryForm({ initialMessage = '' }) {
   const id = useId();
-  const [values, setValues] = useState(EMPTY);
+  const empty = { name: '', email: '', message: initialMessage };
+  const [values, setValues] = useState(empty);
   const [status, setStatus] = useState('idle');
 
   const update = (field) => (event) => {
@@ -31,7 +30,7 @@ export default function InquiryForm() {
 
     try {
       const result = await submitInquiry(values);
-      if (result === 'sent') setValues(EMPTY);
+      if (result === 'sent') setValues(empty);
       setStatus(result);
     } catch {
       setStatus('error');

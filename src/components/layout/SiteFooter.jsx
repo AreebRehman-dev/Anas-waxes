@@ -13,16 +13,16 @@ export default function SiteFooter() {
           fill
           sizes="100vw"
           placeholder="blur"
-          className={styles.image}
+          className={`parallax-photo ${styles.image}`}
         />
-        <h2 className={styles.title}>contact us</h2>
+        <h2 className={`reveal ${styles.title}`}>contact us</h2>
       </div>
 
-      <dl className={styles.details}>
+      <dl className={`reveal ${styles.details}`}>
         <div className={styles.group}>
           <dt className={styles.label}>Phone</dt>
           <dd>
-            <a className={`${styles.value} ${styles.phone}`} href={phoneHref}>
+            <a className={`link-line ${styles.value} ${styles.phone}`} href={phoneHref}>
               {siteConfig.contact.phone}
             </a>
           </dd>
@@ -30,7 +30,7 @@ export default function SiteFooter() {
         <div className={styles.group}>
           <dt className={styles.label}>E-mail</dt>
           <dd>
-            <a className={`${styles.value} ${styles.email}`} href={emailHref}>
+            <a className={`link-line ${styles.value} ${styles.email}`} href={emailHref}>
               {siteConfig.contact.email}
             </a>
           </dd>

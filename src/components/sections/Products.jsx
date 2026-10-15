@@ -3,11 +3,18 @@ import { cn } from '@/lib/cn';
 import styles from './Products.module.css';
 
 /*
-  One catalogue block. `tone` picks the background ('cream' or 'paper');
-  `notePlacement` puts the description beside the last row of cards ('inline')
-  or underneath the grid ('below').
+  A grid of product cards. `tone` picks the background ('cream' or 'paper');
+  `notePlacement` puts the optional description beside the last row of cards
+  ('inline', for when that row has free columns) or underneath ('below').
 */
-export default function Products({ id, title, note, items, tone = 'cream', notePlacement = 'inline' }) {
+export default function Products({
+  id,
+  title,
+  note,
+  items,
+  tone = 'cream',
+  notePlacement = 'below',
+}) {
   const titleId = `${id}-title`;
 
   return (
@@ -19,15 +26,15 @@ export default function Products({ id, title, note, items, tone = 'cream', noteP
 
         <div className={styles.grid}>
           {items.map((item) => (
-            <ProductCard key={item.name} {...item} />
+            <ProductCard key={item.slug} {...item} />
           ))}
-          {notePlacement === 'inline' ? (
-            <p className={cn(styles.note, styles.noteInline)}>{note}</p>
+          {note && notePlacement === 'inline' ? (
+            <p className={cn('reveal', styles.note, styles.noteInline)}>{note}</p>
           ) : null}
         </div>
 
-        {notePlacement === 'below' ? (
-          <p className={cn(styles.note, styles.noteBelow)}>{note}</p>
+        {note && notePlacement === 'below' ? (
+          <p className={cn('reveal', styles.note, styles.noteBelow)}>{note}</p>
         ) : null}
       </div>
     </section>

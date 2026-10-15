@@ -6,6 +6,7 @@
   border-radius: calc(var(--u) * 10);
   background: var(--color-sand);
   color: var(--color-ink);
+  box-shadow: 0 30px 60px -36px rgba(0, 0, 0, 0.55);
 }
 
 .field + .field {
@@ -17,6 +18,11 @@
   font-size: var(--fs-small);
   font-weight: 700;
   line-height: 1.21;
+  transition: color 0.3s var(--ease-out);
+}
+
+.field:focus-within .label {
+  color: var(--color-olive);
 }
 
 .control {
@@ -31,13 +37,22 @@
   color: inherit;
   font: inherit;
   font-size: var(--fs-body);
-  transition: box-shadow 0.2s var(--ease);
+  transition:
+    border-color 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out),
+    background-color 0.3s var(--ease-out);
+}
+
+.control:hover {
+  border-color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .control:focus-visible {
   outline: none;
   border-color: var(--color-ink);
-  box-shadow: 0 0 0 2px var(--color-olive);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(95, 102, 31, 0.45);
 }
 
 .textarea {

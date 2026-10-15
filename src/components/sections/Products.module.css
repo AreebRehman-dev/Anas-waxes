@@ -91,3 +91,24 @@
     grid-column: 1 / -1;
   }
 }
+
+/* Cards in a row arrive one after another, left to right. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .grid > :nth-child(5n + 2) {
+      animation-range: entry 5% entry 45%;
+    }
+
+    .grid > :nth-child(5n + 3) {
+      animation-range: entry 10% entry 50%;
+    }
+
+    .grid > :nth-child(5n + 4) {
+      animation-range: entry 15% entry 55%;
+    }
+
+    .grid > :nth-child(5n + 5) {
+      animation-range: entry 20% entry 60%;
+    }
+  }
+}

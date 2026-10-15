@@ -36,7 +36,7 @@ Each component has its styles next to it in a `.module.css` file.
 
 | To change | Edit |
 | --- | --- |
-| Products, prices, product photos | `src/data/products.js` |
+| Products, specs, uses, photos (each gets a page at `/products/<slug>`) | `src/data/products.js` |
 | Phone, email, page title | `src/config/site.js` |
 | Colours and type sizes | `src/styles/tokens.css` |
 | A photo | Replace the file in `src/assets/images/`, keeping its name |

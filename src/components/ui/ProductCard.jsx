@@ -1,9 +1,14 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { productHref } from '@/lib/products';
 import styles from './ProductCard.module.css';
 
-export default function ProductCard({ name, price, image }) {
+/* Whole card links to the product page. The second line shows packaging. */
+export default function ProductCard({ slug, name, image, specs }) {
+  const packaging = specs.find((spec) => spec.label === 'Packaging')?.value;
+
   return (
-    <article className={styles.card}>
+    <Link href={productHref(slug)} className={`reveal ${styles.card}`}>
       <div className={styles.media}>
         {image ? (
           <Image
@@ -15,8 +20,10 @@ export default function ProductCard({ name, price, image }) {
           />
         ) : null}
       </div>
-      <h3 className={styles.name}>{name}</h3>
-      <p className={styles.price}>[{price}]</p>
-    </article>
+      <h3 className={styles.name}>
+        <span className="link-line">{name}</span>
+      </h3>
+      {packaging ? <p className={styles.meta}>[{packaging}]</p> : null}
+    </Link>
   );
 }

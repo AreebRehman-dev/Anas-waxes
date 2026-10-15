@@ -36,24 +36,24 @@ export default function About() {
             </div>
           </div>
 
-          <div className={`reveal ${styles.media}`}>
+          <div className={`reveal-photo ${styles.media}`}>
             <Image
               src={aboutImage}
               alt="Drums and sacks of wax stacked inside the Anas Waxes warehouse"
               fill
               sizes="(max-width: 899px) 100vw, 45vw"
               placeholder="blur"
-              className={styles.image}
+              className={`parallax-photo ${styles.image}`}
             />
           </div>
         </div>
 
         <ul className={styles.stats}>
-          <li>
+          <li className="reveal">
             <Logo size="lg" />
           </li>
           {STATS.map((stat) => (
-            <li key={stat.value}>
+            <li key={stat.value} className="reveal">
               <p className={`display ${styles.statValue}`}>{stat.value}</p>
               <p className={styles.statLabel}>{stat.label}</p>
             </li>
